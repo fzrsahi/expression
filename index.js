@@ -3,6 +3,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const Router = require("./routes/web");
 const app = express();
+require("dotenv").config({ path: require("find-config")(".env") });
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 const TOKEN = process.env.TOKEN || "ajulgantengsekali";

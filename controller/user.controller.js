@@ -1,5 +1,8 @@
 const model = require("../models/index");
 const bcrypt = require("bcrypt");
+const sendEmail = require("../utils/nodemailer");
+const generateRandomPassword = require("../utils/generatepassword");
+const { use } = require("../routes/web");
 
 module.exports = {
   logIn: async (req, res) => {
@@ -114,5 +117,66 @@ module.exports = {
         res.redirect("/");
       }
     });
+  },
+  forgetPassword: async (req, res) => {
+    const email = req.query.email;
+    console.log(email);
+    const newPassword = generateRandomPassword(10);
+    console.log(typeof newPassword);
+    console.log(newPassword);
+    const userData = await model.User.findOne({
+      where: {
+        email,
+      },
+      attributes: ["name", "email", "password"],
+    });
+
+    if (userData === null) {
+      req.flash("alert", {
+        hex: "#716844",
+        color: "success",
+        status: "Success",
+      });
+      req.flash("message", "email tidak ditemukan");
+      return res.redirect("/");
+    } else {
+      bcrypt.hash(newPassword, 10, async (err, hash) => {
+        await model.User.update(
+          {
+            password: hash,
+          },
+          {
+            where: {
+              email,
+            },
+          }
+        );
+      });
+    }
+
+    sendEmail(email, newPassword, userData.name)
+      .then((result) => {
+        req.flash("alert", {
+          hex: "#716844",
+          color: "success",
+          status: "Success",
+        });
+        req.flash(
+          "message",
+          "Berhasil Kirim Password baru di email, Silahkan cek Email"
+        );
+        res.redirect("/");
+      })
+      .catch((err) => {
+        req.flash("alert", {
+          hex: "#716844",
+          color: "success",
+          status: "Success",
+        });
+        req.flash("message", err.message);
+        console.log("error");
+        console.log(err.message);
+        res.redirect("/");
+      });
   },
 };
