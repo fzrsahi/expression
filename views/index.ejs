@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/img/preloader3.gif" type="image/x-icon">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="css/fontawesome/css/all.css">
+  <link rel="stylesheet" href="css/toastify.css">
+
+
+  <title>Welcome To Expression!</title>
+</head>
+
+<body>
+  <div id="loadingScreen"
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #ffffff; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+    <img src="/img/preloader3.gif" style="width: 200px; height: 200px;">
+  </div>
+
+  <header>
+    <nav>
+      <h1>Expression</h1>
+      <% if (locals.isLoggedIn) { %>
+        <%= console.log(locals.isLoggedIn) %>
+          <h5>Welcome <%= locals.name %>
+          </h5>
+          <% }%>
+            <ul>
+              <% if (!locals.isLoggedIn) { %>
+                <li>
+                  <p id="login" class="login">LOGIN</p>
+                </li>
+                <% }else {%>
+                  <li>
+                    <a href='/logout' class="login">LOGOUT</a>
+                  </li>
+                  <% } %>
+
+
+            </ul>
+
+
+    </nav>
+  </header>
+  <main>
+
+    <div class="top wrapper">
+      <div class="text-top">
+        <div class="error-notif" id="error-notif" style="filter: blur(20x);display: none;">
+          <i class="fa-solid fa-xmark" id="iconEmpat"></i>
+          <h3>Akun tidak Ditemukan!</h3>
+          <p>Mohon Periksa Email Atau Password</p>
+        </div>
+        <div class="error-notif" id="error-notif" style="filter: blur(20x);display: none;">
+          <i class="fa-solid fa-xmark" id="iconEmpat"></i>
+          <h3>Email Sudah Terdaftar!</h3>
+          <p>Mohon Gunakan Email yang lain</p>
+        </div>
+        <h1>Selamat Datang Di <span>Expression</span></h1>
+        <p>"Perjalanan ribuan mil dimulai dengan langkah pertama.” –Lao Tzu.</p>
+      </div>
+      <div class="btn" id="getstarted">
+        <a href="#jumbotron-1">Get Started</a>
+      </div>
+    </div>
+    <div class="jumbotron" id="jumbotron-1">
+      <h1>Tentang</h1>
+      <p>Website ini merupakan sebuah aplikasi web yang dibangun
+        menggunakan teknologi
+        Express.js sebagai framework
+        back-end dan Vanilla CSS sebagai teknologi front-end. Aplikasi web ini tidak menggunakan framework CSS seperti
+        Bootstrap atau Foundation, sehingga setiap elemen halaman ditata secara manual menggunakan CSS.<br>
+        Website ini adalah platform yang bertujuan untuk membagikan kutipan inspiratif dari berbagai tokoh terkenal,
+        mulai dari tokoh politik, sosial, budaya, hingga tokoh agama bahkan orang biasa.
+      </p>
+    </div>
+    <div class="nav-mid">
+      <ul>
+        <li> <a href="#quotes">Spread your words</a></li>
+        <li><a href="#content">Best Quotes</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div class="quotes" id="quotes">
+      <h1>Add Your favorite Quotes</h1>
+      <form action="/quote" method="POST">
+        <!-- <input type="text" name="title" id="title" placeholder="Your Title here" class="value" required><br> -->
+        <input type="text" name="quote" id="quotes" placeholder="       Your quotes here" class="value" required><br>
+        <input type="submit" name="" class="submit submit-one" value="Spread Your Words">
+      </form>
+      <img src="/img/icon1.png" class="icon sawah">
+    </div>
+    <div class="jumbotron">
+      <h1 class="title-jumbotron">"Everyone should learn how to program a computer,because it teaches you how to
+        think."<br> - Steve Jobs</h1>
+    </div>
+    <div class="content" id="content">
+      <!-- <div class="content-main"></div> -->
+
+      <div class="card quotes-one">
+        <!-- <a href="/detail"><i class="fa-solid fa-circle-info" style="color : wheat"></i></a> -->
+        <p>
+          lorem im
+        </p>
+        <span> - Ajul </span>
+
+      </div>
+      <div class="card quotes-one">
+        <!-- <a href="/detail"><i class="fa-solid fa-circle-info" style="color : wheat"></i></a> -->
+        <p>
+          lorem im
+        </p>
+        <span> - Ajul </span>
+
+      </div>
+      <div class="card quotes-one">
+        <!-- <a href="/detail"><i class="fa-solid fa-circle-info" style="color : wheat"></i></a> -->
+        <p>
+          lorem im
+        </p>
+        <span> - Ajul </span>
+
+      </div>
+
+      <% result.forEach(data=> { %>
+        <div class="card quotes-one">
+          <!-- <a href="/detail"><i class="fa-solid fa-circle-info" style="color : wheat"></i></a> -->
+
+          <p>
+            <%= data.quote %>
+          </p>
+          <span> - <%= data.name %>
+          </span>
+
+        </div>
+        <% }) %>
+
+
+    </div>
+
+    <div class="jumbotron">
+      <h1 class="title-jumbotron study">Don't Study because you need to. Study because knowledge is power.
+        study because they can never take it away from you. study because you want to know more. Study because it
+        enchances you. study because it grows you.
+      </h1>
+    </div>
+    <aside>
+      <div class="profile" id="about">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="our-team">
+              <div class="picture">
+                <img class="img-fluid" src="/img/profile.JPG">
+              </div>
+              <div class="team-content">
+                <h3 class="name">Fazrul Sahi</h3>
+                <h4 class="title">Beginner</h4>
+              </div>
+              <ul class="social">
+                <li><a href="#" <i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#" <i class="fa-brands fa-github"></i></a></li>
+                <li><a href="#" <i class="fa-brands fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+  <footer>
+    <div class="footer-title">
+      <h1>Expression</h1>
+      <div class="copyright">
+        <p>© Expression 2022</p>
+      </div>
+    </div>
+    <div class="footer-paragraph">
+      <p>Font Source : Google Font</p>
+      <p>Image Source : Ghibli Studio</p>
+      <p>Icon Source : Fontawesome</p>
+
+    </div>
+
+  </footer>
+  <div class="form form-login" id="form-login">
+    <i class="fa-solid fa-xmark" id="iconSatu">X</i>
+    <form action="/login" method="POST">
+      <label for="email">Email:</label><br>
+      <input type="text" id="email" name="email" placeholder="person@email.com"><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password"><br>
+      <input type="submit" class="submit submit-two" value="Gas login!" id="submit-one"><br>
+      <p>or</p><br>
+      <span class="sign submit-three">Register</span>
+    </form>
+  </div>
+  <div class="form form-regis" id="form-regis">
+    <i class="fa-solid fa-xmark" id="iconDua">X</i>
+    <form action="/register" method="POST">
+      <label for="email">Username:</label><br>
+      <input type="text" id="username" name="name" placeholder="" required><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" placeholder="person@email.com" required><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" required><br>
+      <input type="submit" class="submit submit-two" value="Gas Regis!"><br>
+      <p>or have account</p><br>
+      <span class="sign submit-three loginRegis"> Sign In</span>
+    </form>
+  </div>
+  <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script> -->
+  <script src="script/script.js"></script>
+  <script src="script/toastify.js"></script>
+  <% if(message.length> 0){ %>
+    <script>
+      Toastify({
+        text: "<%= message %>",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "center",
+        backgroundColor: "<%= alert[0].hex %>",
+      }).showToast()
+    </script>
+    <% } %>
+      <script>
+        window.addEventListener("load", function () {
+          const loadingScreen = document.getElementById("loadingScreen");
+          loadingScreen.style.opacity = 0;
+          setTimeout(() => loadingScreen.remove(), 1000);
+        });
+        const local = "<%= locals.isLoggedIn %> ";
+        if (local === true) {
+          window.addEventListener("load", function () {
+            const loadingScreen = document.getElementById("loadingScreen");
+            loadingScreen.style.opacity = 0;
+            setTimeout(() => loadingScreen.remove(), 1000);
+          });
+        }
+      </script>
+
+</body>
+
+</html>
