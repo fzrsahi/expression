@@ -1,16 +1,14 @@
 const nodemailer = require("nodemailer");
-const generateRandomPassword = require("./generatepassword");
-const model = require("../models/index");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const email = process.env.USER_EMAIL;
-const password = process.env.USER_PASSWORD;
 let transporter = nodemailer.createTransport({
   service: "gmail",
   port: 465,
   secure: true,
   auth: {
-    user: email,
-    pass: password,
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD,
   },
 });
 
