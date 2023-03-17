@@ -233,7 +233,7 @@ nav h1 {
 
 .submit-one {
   font-size: 2em;
-  margin-left: 200px;
+  /* margin-left: 200px; */
 }
 
 
@@ -552,6 +552,49 @@ footer {
 .study {
   margin: auto 20px;
 }
+#modal {
+  opacity: 0;
+  pointer-events: none;
+  padding: 100px;
+  border: 3px solid rgb(245, 222, 179);
+  background-color: #716844;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  position: fixed;
+  z-index: 10;
+  transition : all 300ms ease-in-out;
+  overflow: scroll;
+  font-size: 9px;
+}
+
+#modal.show {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+
+
+#close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.p-forget {
+  font-size: 20px;
+  color: rgb(245, 222, 179);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 
 /* .content {} */
 
@@ -838,9 +881,13 @@ footer {
   }
 
   .submit-three {
-    margin-top: 0px;
+    /* margin-bottom: 20px; */
     width: 55% !important;
     display: inline-block;
+  }
+
+  .lupa-pass {
+    margin-top: 20px;
   }
 
 
@@ -868,6 +915,10 @@ footer {
 .study {
   margin: auto 20px;
   font-size: 20px;
+}
+
+#modal {
+  padding: 50px;
 }
 
 }

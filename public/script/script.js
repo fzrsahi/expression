@@ -42,26 +42,6 @@ loginRegis.addEventListener("click", function () {
   document.getElementById("form-login").classList.add("show");
 });
 
-// window.onload = function () {
-//   setTimeout(() => {
-//     loading.style.display = "none";
-//   }, 300);
-//   console.log("tex");
-// };
-
-// const passSalah = document.getElementById('passwordSalah')
-// passSalah.addEventListener('load',function(){
-//   console.log('okeeeeeeeeeeeeee')
-// })
-//   window.addEventListener('load',function(){
-//     console.log('pas salahhh')
-//     Swal.fire({
-//       icon: 'error',
-//       title: 'Passsword atau email anda salah',
-//       text: 'Mohon coba Lagi atau daftar untuk membuat akun',
-//     })
-//   })
-
 submitSatu.addEventListener("click", function () {
   loading.fadeOut = "slow";
   console.log("oke");
@@ -76,19 +56,21 @@ xMarkTiga.addEventListener("click", function () {
   document.getElementById("error-notif").style.display = "none";
 });
 
-// function icon(){
-//   console.log('oke');
-//   detail.style.display = "inline-block";
-//   for(const m of main){
-//     m.classList.add("blur")
-//   }
-// }
+const forgetPassword = document.getElementById("lupaPass");
 
-// function closeDetail(){
-//   detail.style.display = "none";
-//   for(const m of main){
-//     m.classList.remove("blur")
-//   }
-// }
+forgetPassword.addEventListener("click", function () {
+  for (const m of main) {
+    m.classList.add("blur");
+  }
+  document.getElementById("form-login").classList.remove("show");
+  document.getElementById("modal").classList.add("show");
+});
 
+const closeButton = document.getElementById("close-btn");
 
+closeButton.addEventListener("click", function () {
+  for (const m of main) {
+    m.classList.remove("blur");
+  }
+  document.getElementById("modal").classList.remove("show");
+});
