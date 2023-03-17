@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="css/fontawesome/css/all.css">
   <link rel="stylesheet" href="css/toastify.css">
-
-
   <title>Welcome To Expression!</title>
 </head>
 
@@ -38,11 +36,7 @@
                     <a href='/logout' class="login">LOGOUT</a>
                   </li>
                   <% } %>
-
-
             </ul>
-
-
     </nav>
   </header>
   <main>
@@ -98,32 +92,6 @@
         think."<br> - Steve Jobs</h1>
     </div>
     <div class="content" id="content">
-      <!-- <div class="content-main"></div> -->
-
-      <div class="card quotes-one">
-        <!-- <a href="/detail"><i class="fa-solid fa-circle-info" style="color : wheat"></i></a> -->
-        <p>
-          lorem im
-        </p>
-        <span> - Ajul </span>
-
-      </div>
-      <div class="card quotes-one">
-        <!-- <a href="/detail"><i class="fa-solid fa-circle-info" style="color : wheat"></i></a> -->
-        <p>
-          lorem im
-        </p>
-        <span> - Ajul </span>
-
-      </div>
-      <div class="card quotes-one">
-        <!-- <a href="/detail"><i class="fa-solid fa-circle-info" style="color : wheat"></i></a> -->
-        <p>
-          lorem im
-        </p>
-        <span> - Ajul </span>
-
-      </div>
 
       <% result.forEach(data=> { %>
         <div class="card quotes-one">
@@ -186,19 +154,20 @@
 
   </footer>
   <div class="form form-login" id="form-login">
-    <i class="fa-solid fa-xmark" id="iconSatu">X</i>
+    <i class="fa-solid fa-xmark" id="iconSatu"></i>
     <form action="/login" method="POST">
       <label for="email">Email:</label><br>
       <input type="text" id="email" name="email" placeholder="person@email.com"><br>
       <label for="password">Password:</label><br>
       <input type="password" id="password" name="password"><br>
       <input type="submit" class="submit submit-two" value="Gas login!" id="submit-one"><br>
-      <p>or</p><br>
+      <p>or</p>
       <span class="sign submit-three">Register</span>
+      <span class="sign submit-three lupa-pass" id="lupaPass">Lupa Password</span>
     </form>
   </div>
   <div class="form form-regis" id="form-regis">
-    <i class="fa-solid fa-xmark" id="iconDua">X</i>
+    <i class="fa-solid fa-xmark" id="iconDua"></i>
     <form action="/register" method="POST">
       <label for="email">Username:</label><br>
       <input type="text" id="username" name="name" placeholder="" required><br>
@@ -211,6 +180,14 @@
       <span class="sign submit-three loginRegis"> Sign In</span>
     </form>
   </div>
+  <div id="modal">
+    <button id="close-btn">&times;</button>
+    <form action="/forgetpassword" method="GET">
+      <p class="p-forget">Masukan Email Anda : </p>
+      <input type="email" name="email" id="email"><br>
+      <button type="submit" class="submit" style="width: 100%;">Submit</button>
+    </form>
+  </div>
   <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="sweetalert2.all.min.js"></script> -->
   <script src="script/script.js"></script>
@@ -219,7 +196,7 @@
     <script>
       Toastify({
         text: "<%= message %>",
-        duration: 3000,
+        duration: 5000,
         close: true,
         gravity: "top",
         position: "center",

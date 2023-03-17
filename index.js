@@ -6,7 +6,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 const TOKEN = process.env.TOKEN || "ajulgantengsekali";
-
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
